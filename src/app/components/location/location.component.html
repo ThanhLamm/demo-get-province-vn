@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <form [formGroup]="postForm" class="col-8 offset-2">
+            <div class="form-group">
+                <label for="province">Province</label>
+                <select class="custom-select" id="province" (change)="setProvinceCode($event.target)" formControlName="province"
+                    [ngClass]="{'is-invalid':postForm.get('province')?.touched && postForm.get('province')?.invalid}">
+                    <option *ngFor="let item of provinces" [value]="item.code">{{item.name}}</option>
+                </select>
+                <small class="invalid-feedback">Province is invalid</small>
+            </div>
+            <div class="form-group">
+                <label for="district">District</label>
+                <select class="custom-select" id="district" (change)="setDistrictCode($event.target)" formControlName="district"
+                    [ngClass]="{'is-invalid':postForm.get('district')?.touched && postForm.get('district')?.invalid}">
+                    <option *ngFor="let item of districts" [value]="item.code">{{item.name}}</option>
+                </select>
+                <small class="invalid-feedback">District is invalid</small>
+            </div>
+            <div class="form-group">
+                <label for="ward">Ward</label>
+                <select class="custom-select" id="ward" formControlName="ward"
+                    [ngClass]="{'is-invalid':postForm.get('ward')?.touched && postForm.get('ward')?.invalid}">
+                    <option *ngFor="let item of wards" [value]="item.code">{{item.name}}</option>
+                </select>
+                <small class="invalid-feedback">Ward is invalid</small>
+            </div>
+            <div class="form-group">
+                <label for="number">Apartment number</label>
+                <input type="text" id="number" class="form-control" formControlName="number"
+                [ngClass]="{'is-invalid':postForm.get('number')?.touched && postForm.get('number')?.invalid}">
+                <small class="invalid-feedback">Apartment number is invalid</small>
+            </div>
+            <button class="btn btn-primary" (click)="submit()">Submit</button>
+        </form>
+    </div>
+</div>
